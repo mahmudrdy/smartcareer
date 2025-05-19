@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Career Advisor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fade-in {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.5s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white min-h-screen flex items-center justify-center px-4">
+
+  <!-- Popup Selamat Datang -->
+  <div id="popup" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md animate-fade-in">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 text-gray-800">
+        👋 Selamat Datang di <span class="text-blue-600">Smart Career Advisor</span>
+      </h2>
+      <p class="text-sm text-gray-600 text-center mb-6">Temukan karier yang paling cocok dengan kepribadianmu!</p>
+      <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap Anda</label>
+      <input type="text" id="nama" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition" placeholder="Contoh: Mahmud Riady" />
+      <button onclick="masuk()" class="mt-6 w-full bg-blue-600 text-white py-2 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300">Mulai Konsultasi</button>
+    </div>
+  </div>
+
+  <!-- Konten Utama -->
+  <div id="konten" class="hidden container mx-auto px-4 text-center">
+    <h1 id="sapaan" class="text-2xl md:text-3xl font-bold mb-6 text-gray-800"></h1>
+    
+    <div id="intro">
+      <p class="text-lg text-gray-700 mb-4">Ingin tahu karier apa yang paling cocok untuk kamu?</p>
+      <button onclick="tanyaKarir()" class="bg-green-600 text-white px-6 py-2 rounded-xl hover:bg-green-700 transition">Ya, saya mau!</button>
+    </div>
+
+    <div id="formKarir" class="mt-6 hidden">
+      <label for="karir" class="block text-md mb-2 font-medium text-gray-700">Masukkan nama karier yang ingin kamu eksplorasi:</label>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2">
+        <input type="text" id="karir" class="px-4 py-2 border rounded-xl w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" placeholder="Contoh: Dokter" />
+        <button onclick="tampilkanPertanyaan()" class="bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600 transition">Lanjut</button>
+      </div>
+    </div>
+
+    <div id="formPertanyaan" class="mt-6 hidden text-left max-w-2xl mx-auto">
+      <p class="font-semibold mb-4 text-center text-gray-700">Jawab pertanyaan berikut:</p>
+      <div id="pertanyaanContainer" class="space-y-4 text-center"></div>
+    </div>
+
+    <div id="hasilContainer" class="hidden mt-6 text-center">
+      <div class="bg-white shadow-xl rounded-3xl p-8 max-w-md mx-auto border border-gray-200">
+        <p id="hasilKarir" class="text-xl font-semibold text-gray-800 mb-6"></p>
+        <button onclick="kembaliKeKarir()" class="bg-gray-600 text-white px-6 py-2 rounded-xl hover:bg-gray-700 transition">Coba Karier Lain</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
